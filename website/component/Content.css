@@ -1,0 +1,11 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Kartların yan yana dizilmesini sağlar */
+    gap: 16px; /* Kartlar arasındaki boşluk */
+    justify-content: flex-start; /* Kartları sola hizalar */
+  }
+  
+  .card {
+    flex: 0 1 auto; /* Kartların genişliğini otomatik ayarlamak için */
+  }
+  
