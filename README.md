@@ -51,11 +51,12 @@ This is a full-stack application for blog site, built with Spring Boot for the b
 ## Usage
 
 Once both the backend and frontend servers are running, you can access the application in your web browser at:
-http://localhost:5173/ -> Main.
-http://localhost:5173/contentList -> Admin panel
-http://localhost:5173/Add-content -> Add and Update Content 
-http://localhost:5173/contents /projects -> Contents and Projects area.
-http://localhost:5173/readContent/{title} -> Content page.
+
+- http://localhost:5173/ -> Main.
+- http://localhost:5173/contentList -> Admin panel
+- http://localhost:5173/Add-content -> Add and Update Content 
+- http://localhost:5173/contents /projects -> Contents and Projects area.
+- http://localhost:5173/readContent/{title} -> Content page.
 
 
 ## Additional Information
