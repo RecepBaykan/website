@@ -18,15 +18,3 @@ spring:
       ddl-auto: update
     generate-ddl: true
     show-sql: true
-
-# HTTPS ayarları
-server:
-  port: 8443
-  ssl:
-    key-store: classpath:keystore.jks
-    key-store-password: ubuntutr123
-    key-alias: nontius
-
-# HTTP PORT
-http:
-  port: 8080
