@@ -3,7 +3,7 @@ import axios from 'axios';
 import Base from 'antd/es/typography/Base';
 
 
-const BASE_URL = 'https://nontius.com/api/content';
+const BASE_URL = 'http://localhost/api/content';
 
 export const listContents = () => axios.get(BASE_URL);
 
