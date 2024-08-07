@@ -1,0 +1,13 @@
+
+.content {
+  padding: 0 240px;
+}
+
+
+@media (max-width: 900px) {
+  .content {
+    padding: 0 24px;
+  }
+
+  
+}

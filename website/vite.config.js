@@ -1,7 +1,14 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-})
+  optimizeDeps: {
+    // Bu, Vite'in ihtiyaç duyduğu modülleri önceden optimize etmesini sağlar
+    include: ['quill', 'quill-image-resize-module-react'],
+  },
+  build: {
+    rollupOptions: {
+      // Eğer modüller hala uyumsuzsa, buraya Rollup ayarlarını ekleyebilirsiniz
+
+    },
+  },
+});

@@ -1,0 +1,35 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap; /* Kartların yan yana dizilmesini sağlar */
+    gap: 16px; /* Kartlar arasındaki boşluk */
+    justify-content: flex-start; /* Kartları sola hizalar */
+  }
+  
+  .card {
+    flex: 0 1 auto; /* Kartların genişliğini otomatik ayarlamak için */
+  }
+  
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .card {
+    width: auto;
+    max-width: 18rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  

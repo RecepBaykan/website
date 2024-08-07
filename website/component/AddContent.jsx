@@ -19,29 +19,39 @@ const AddContent = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [desc, setDesc] = useState("");
+  const [metaTag, setMetaTag] = useState("");
+  const [date, setDate] = useState('');
   
   const [picture, setPicture] = useState('');
 
-  const { quill, quillRef } = useQuill({
-    modules: {
-      toolbar: [
-        ["bold", "italic", "underline"],
-        ["image", "code-block"],
-      ],
-      imageResize: {
-        parchment: Quill.import('parchment'),
-        modules: ["Resize", "DisplaySize"],
-      },
+  const formats = [
+    'bold', 'italic', 'underline', 'strike', 'code-block', 'link', 'image'
+  ];
+  
+  const modules = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike', 'code-block'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+      ['link', 'image'],
+    ],
+    imageResize: {
+      parchment: Quill.import('parchment'),
+      modules: ['Resize', 'DisplaySize'],
     },
-  });
+  };
+
+  const { quill, quillRef } = useQuill({ modules, theme: 'snow', formats });
+  
+
+ 
 
   
 
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [tagsIS, setTagsIS] = useState([false, false, false, false]);
-  const tags = ["TECH", "GAME", "NEWS", "BLOG"];
+  const [tagsIS, setTagsIS] = useState([false, false, false, false, false, false, false]);
+  const tags = ["TECH", "GAME", "NEWS", "BLOG", "JAVA", "GIT", "PATCH"];
 
   const handleSwitch = (e) => {
     const tagName = e.target.name;
@@ -61,6 +71,9 @@ const AddContent = () => {
           setTitle(response.data.title);
           setContent(response.data.content);
           setDesc(response.data.desc);
+          setDate(response.data.date);
+          setMetaTag(response.data.metaTag);
+          setPicture(response.data.picture);
           const tagStates = tags.map((tag) => response.data.tags.includes(tag));
           setTagsIS(tagStates);
         })
@@ -84,6 +97,10 @@ const AddContent = () => {
     setDesc(e.target.value);
   }
 
+  function handleMetaTag(e) {
+    setMetaTag(e.target.value);
+  }
+
   function handlePic(event) {  // 'event' parametresini al
     
     const reader = new FileReader();
@@ -104,7 +121,8 @@ const AddContent = () => {
         return acc;
       }, []);
 
-      const date = formatDate(new Date());
+      const d = id ? date : formatDate(new Date());
+      setDate(d);
 
       const _content = {
         title,
@@ -112,18 +130,19 @@ const AddContent = () => {
         tags: selectedTags,
         date,
         desc,
-        picture
+        picture,
+        metaTag
         
       };
 
       if (id) {
         updateContent(id, _content).then((response) => {
-          console.log(response.data);
+         
           navigate("/contentList");
         });
       } else {
         createContent(_content).then((response) => {
-          console.log(response.data);
+      
           navigate("/contentList");
           
         });
@@ -135,6 +154,7 @@ const AddContent = () => {
     title: "",
     content: "",
     desc: "",
+    metaTag,
   });
 
   function validateForm() {
@@ -208,11 +228,25 @@ const AddContent = () => {
             />
           </Form.Item>
         </p>
+        <p>Meta Tag
+          <Form.Item
+            validateStatus={errors.metaTag ? "error" : ""}
+            help={errors.metaTag}
+          >
+            <Input
+              value={metaTag}
+              placeholder={id ? metaTag : "Title, Java, Dark Souls "}
+              onChange={handleMetaTag}
+            />
+          </Form.Item>
+        </p>
+
+
         <div class="mb-3">
           <label for="formFile" class="form-label">
            Resim Seç
           </label>
-          <input class="form-control" type="file" id="formFile" onChange={handlePic}></input>
+          <input class="form-control" type="file" id="formFile" onChange={handlePic} disabled={id ? true : false} ></input>
         </div>
         Select Tags:
         <br></br>
@@ -251,6 +285,34 @@ const AddContent = () => {
           checked={tagsIS[3]}
         />
         <span className="badge bg-info">BLOG</span>
+        <br></br>{" "}
+        <input
+          className="form-check-input"
+          type="checkbox"
+          name="JAVA"
+          onChange={handleSwitch}
+          checked={tagsIS[4]}
+        />
+        <span className="badge bg-info">JAVA</span>
+        <br></br>{" "}
+        <input
+          className="form-check-input"
+          type="checkbox"
+          name="GIT"
+          onChange={handleSwitch}
+          checked={tagsIS[5]}
+        />
+        <span className="badge bg-info">GIT</span>
+        <br></br>{" "}
+        <input
+          className="form-check-input"
+          type="checkbox"
+          name="PATCH"
+          onChange={handleSwitch}
+          checked={tagsIS[6]}
+        />
+        <span className="badge bg-info">PATCH</span>
+        <br></br>{" "}
         <p>Content</p>
         <p>
           <Form.Item

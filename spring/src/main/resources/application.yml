@@ -1,0 +1,32 @@
+# Veritabanı ayarları
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:./dataBase
+    username: root
+    password: 1234
+
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+# HTTPS ayarları
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:keystore.jks
+    key-store-password: ubuntutr123
+    key-alias: nontius
+
+# HTTP PORT
+http:
+  port: 8080
