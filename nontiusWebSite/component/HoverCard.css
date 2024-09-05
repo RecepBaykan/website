@@ -1,0 +1,19 @@
+.hoverContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 15px;
+
+}
+
+.hoverCard{
+  
+    border-radius: 7px;
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.hoverCard:hover{
+    transform: translateY(-15px);
+}

@@ -71,6 +71,10 @@ const ContentList = () => {
     if(tag == "NEW"){
       tagType = "badge bg-succes";
     }
+
+    if(tag == "ENG"){
+      tagType = "badge bg-succes";
+    }
     
     return( 
       <>

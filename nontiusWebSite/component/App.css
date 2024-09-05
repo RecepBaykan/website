@@ -1,0 +1,52 @@
+.social {
+  display: block; /* Varsayılan olarak görünür */
+}
+
+
+.social2 {
+  display: none; /* Varsayılan olarak gizli */
+}
+
+
+.con{
+  position: fixed;
+
+  margin-left: 16;
+  top: 0;
+  right: -60px;
+  margin: 70px;
+  z-index: 100;
+}
+
+@media (max-width: 900px) {
+  .social {
+    display: none; /* Ekran genişliği 900px veya daha küçük olduğunda gizle */
+  }
+
+  .social2 {
+    display: block; /* Ekran genişliği 900px veya daha küçük olduğunda göster */
+  }
+  .con{
+    position: fixed;
+    
+    margin-left: 16;
+    top: 0;
+    right: -75px;
+    margin: 70px;
+    z-index: 100;
+  }
+}
+
+.content {
+  padding: 0 240px;
+}
+
+@media (max-width: 900px) {
+  .content {
+    padding: 0 24px;
+  }
+}
+
+body {
+  margin: 0;
+}

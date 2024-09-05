@@ -62,8 +62,8 @@ const Contents = () => {
 
   return (
     <>
-       {areas("Türkçe Yamalar", "PATCH")}
-       {areas("Oyunlar", "GIT")}
+       {areas("Projeler", "GIT")}
+       
     </>
   );
 

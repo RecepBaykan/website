@@ -5,9 +5,12 @@ import { Helmet } from 'react-helmet-async';
 import { convertTitleToUrl } from '../Services/ConvertTitle';
 import Cookies from 'js-cookie';
 import { Card } from 'antd';
+import DOMPurify from 'dompurify';
+import '../component/codeblock.css'
 
 
 const Content_i = () => {
+
   const { title } = useParams();
   const navigate = useNavigate();
   const [content, setContent] = useState(null);
@@ -41,6 +44,7 @@ const Content_i = () => {
       .then((response) => {
         const data = response.data;
         setContent(data.find(d => convertTitleToUrl(d.title) === title) || null);
+        
       })
       .catch((error) => {
         console.error(error);
@@ -102,7 +106,7 @@ const Content_i = () => {
                     padding: '10px',
                     boxSizing: 'border-box' 
                   }}
-                  dangerouslySetInnerHTML={{ __html: c.content }}>
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(c.content ) }}>
                 </div>
               </div>
             </div>

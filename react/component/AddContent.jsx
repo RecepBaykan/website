@@ -50,8 +50,8 @@ const AddContent = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const [tagsIS, setTagsIS] = useState([false, false, false, false, false, false, false]);
-  const tags = ["TECH", "GAME", "NEWS", "BLOG", "JAVA", "GIT", "PATCH"];
+  const [tagsIS, setTagsIS] = useState([false, false, false, false, false, false, false, false]);
+  const tags = ["TECH", "GAME", "NEWS", "BLOG", "JAVA", "GIT", "PATCH", "ENG"];
 
   const handleSwitch = (e) => {
     const tagName = e.target.name;
@@ -312,7 +312,16 @@ const AddContent = () => {
           checked={tagsIS[6]}
         />
         <span className="badge bg-info">PATCH</span>
-        <br></br>{" "}
+
+        <input
+          className="form-check-input"
+          type="checkbox"
+          name="PATCH"
+          onChange={handleSwitch}
+          checked={tagsIS[7]}
+        />
+        <span className="badge bg-info">ENG</span>
+     
         <p>Content</p>
         <p>
           <Form.Item

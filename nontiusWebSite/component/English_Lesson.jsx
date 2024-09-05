@@ -12,7 +12,7 @@ import Cookies from "js-cookie";
 
 const { Meta } = Card;
 
-const Contents = () => {
+const English_Lesson = () => {
   const navigate = useNavigate();
   const [contents, setContents] = useState([]);
   const [load, setLoad] = useState(true);
@@ -62,8 +62,8 @@ const Contents = () => {
 
   return (
     <>
-       {areas("Türkçe Yamalar", "PATCH")}
-       {areas("Oyunlar", "GIT")}
+      {areas("İngilizce Dersleri", "ENG")}
+       
     </>
   );
 
@@ -71,7 +71,7 @@ const Contents = () => {
     return (
       <>
       <Helmet>
-          <title>İçerikler</title>
+          <title>İngilizce Dersleri</title>
       </Helmet>
         <div style={{ padding: 10 }}>
           <h2 style={{color:textColor}}>{name}</h2>
@@ -144,4 +144,4 @@ const Contents = () => {
   }
 };
 
-export default Contents;
+export default English_Lesson;
